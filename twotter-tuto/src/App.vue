@@ -1,9 +1,9 @@
 <template>
-  <div id="nav">
+  <div id="app">
     <nav>
       <router-link to="/">
         <div class="navigation__logo">
-          Twooter
+          Twotter
         </div>
       </router-link>
       <div class="navigation__user" v-if="user">
@@ -15,17 +15,17 @@
 </template>
 
 <script>
-import { computed } from 'vue';
-import {useStore} from 'vuex'
+import { computed } from "vue";
+import { useStore } from "vuex";
 
 export default {
   name: "App",
   setup() {
-    const store = useStore()
-    const user = computed(() => store.state.User.user)
+    const store = useStore();
+    const user = computed(() => store.state.User.user);
 
     return {
-      user
+      user,
     };
   },
 };

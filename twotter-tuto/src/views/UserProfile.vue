@@ -26,7 +26,7 @@
 <script>
 import { reactive, computed } from "vue";
 import { useRoute } from "vue-router";
-import { users } from "../assets/users"
+import { users } from "../assets/users";
 import TwootItem from "../components/TwootItem";
 import CreateTwootPanel from "../components/CreateTwootPanel";
 
@@ -34,17 +34,17 @@ export default {
   name: "UserProfile",
   components: { TwootItem, CreateTwootPanel },
   setup() {
-    const route = useRoute()
-    const userId = computed(() => route.params.userId)
+    const route = useRoute();
+    const userId = computed(() => route.params.userId);
 
     const state = reactive({
       followers: 0,
-      user: users[userId.value - 1] || users[0]
+      user: users[userId.value - 1] || users[0],
     });
 
     function addTwoot(twoot) {
       state.user.twoots.unshift({
-        id: this.user.twoots.length + 1,
+        id: state.user.twoots.length + 1,
         content: twoot,
       });
     }
@@ -52,7 +52,7 @@ export default {
     return {
       state,
       addTwoot,
-      userId
+      userId,
     };
   },
 };
@@ -62,16 +62,16 @@ export default {
 .user-profile {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  width: 100%;
+  grid-gap: 50px;
   padding: 50px 5%;
   .user-profile__user-panel {
     display: flex;
     flex-direction: column;
-    margin-right: 50px;
     padding: 20px;
     background-color: white;
     border-radius: 5px;
     border: 1px solid #dfe3e8;
+    margin-bottom: auto;
     h1 {
       margin: 0;
     }
@@ -102,6 +102,7 @@ export default {
   .user-profile__twoots-wrapper {
     display: grid;
     grid-gap: 10px;
+    margin-bottom: auto;
   }
 }
 </style>
